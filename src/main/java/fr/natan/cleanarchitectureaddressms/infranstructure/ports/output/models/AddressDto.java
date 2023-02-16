@@ -18,7 +18,6 @@ public class AddressDto{
         this.country = country;
     }
 
-
     public int getWayNum() {
         return wayNum;
     }

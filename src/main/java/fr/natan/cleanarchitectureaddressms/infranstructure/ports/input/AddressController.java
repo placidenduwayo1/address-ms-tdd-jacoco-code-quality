@@ -14,7 +14,6 @@ import java.util.Optional;
 @RestController
 public class AddressController {
     private final AddressInputService addressInputService;
-
     public AddressController(AddressInputService addressService) {
         this.addressInputService = addressService;
     }
@@ -24,7 +23,6 @@ public class AddressController {
             AddressOneOrMoreFieldsInvalidException {
         return addressInputService.createAddress(addressDto);
     }
-
     @GetMapping(value = "/addresses")
     public Collection<Address> loadAllAddresses(){
         return addressInputService.loadAllAddresses();

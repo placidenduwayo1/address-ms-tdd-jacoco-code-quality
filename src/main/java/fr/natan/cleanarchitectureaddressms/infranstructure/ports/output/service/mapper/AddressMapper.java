@@ -14,7 +14,6 @@ public class AddressMapper {
 
         return addressModel;
     }
-
     public static AddressDto mapModelToDto(AddressModel addressModel) {
         AddressDto addressDto = new AddressDto();
         BeanUtils.copyProperties(addressModel, addressDto);
