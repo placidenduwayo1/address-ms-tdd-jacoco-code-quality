@@ -1,8 +1,8 @@
 pipeline {
   agent any
   tools {
-    maven 'MAVEN'
-    jdk 'JDK'
+    maven 'Maven'
+    jdk 'Java11'
   }
   stages {
         stage('build-src-code') { 
