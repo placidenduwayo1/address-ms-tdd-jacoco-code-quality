@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DataJpaTest
 @Tag("AddressRepositoryTest")
@@ -53,9 +54,13 @@ class AddressRepositoryTest {
     @Test
     void findByWayNumAndStreetAndPoBoxAndCity() {
         //when
-        underTest.saveAll(addresses);
+       underTest.saveAll(addresses);
         Collection<AddressModel> actualAddresses = underTest.findByWayNumAndStreetAndPoBoxAndCity(
                 1, "street name", 10000, "city name");
-        assertThat(actualAddresses).hasSize(1);
+        assertAll(
+                ()->  assertThat(actualAddresses).hasSize(1),
+                ()-> assertThat (underTest.findAll()).hasSize(3),
+                () -> assertThat(underTest.findById(2L).get().getWayNum()).isEqualTo(2)
+        );
     }
 }
