@@ -2,12 +2,13 @@ pipeline {
   agent any
   tools {
     maven 'Maven'
-    jdk 'Java17'
+    jdk 'Java-17'
   }
   stages {
         stage('Build') { 
             steps {
               sh "mvn -B -DskipTests clean package"
+              sh "mvn verify"
             }
         }
         stage('Test'){
